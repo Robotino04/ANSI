@@ -55,7 +55,7 @@ class ANSI{
          * @param loc foreground or background color
          * @return std::string the escape sequence to produce this color
          */
-        static std::string set24BitColor(uint8_t red, uint8_t green, uint8_t blue, ColorLocation loc);
+        static std::string set24BitColor(uint8_t red, uint8_t green, uint8_t blue, ColorLocation loc = ColorLocation::Foreground);
 
         /**
          * @brief Set the terminal color (8-bit)
@@ -66,7 +66,7 @@ class ANSI{
          * @param loc foreground or background color
          * @return std::string the escape sequence to produce this color
          */
-        static std::string set8BitColor(uint8_t color, ColorLocation loc);
+        static std::string set8BitColor(uint8_t color, ColorLocation loc = ColorLocation::Foreground);
 
         /**
          * @brief Set the terminal color (4-bit)
@@ -77,7 +77,7 @@ class ANSI{
          * @param loc foreground or background color
          * @return std::string the escape sequence to produce this color
          */
-        static std::string set4BitColor(Color4Bit color, ColorLocation loc);
+        static std::string set4BitColor(Color4Bit color, ColorLocation loc = ANSI::ColorLocation::Foreground);
 
         /**
          * @brief Reset the terminal color
@@ -94,4 +94,11 @@ class ANSI{
          */
         static std::string reset();
 
+        /**
+         * @brief Clears the terminal and optionally moves the cursor to the top left.
+         * 
+         * @param returnToTopLeft should the cursor move to the top left
+         * @return std::string the escape sequence to produce this effect
+         */
+        static std::string clearScreen(bool returnToTopLeft=true);
 };

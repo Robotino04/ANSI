@@ -25,3 +25,7 @@ std::string ANSI::reset(ColorLocation loc){
 std::string ANSI::reset(){
     return reset(ColorLocation::Foreground) + reset(ColorLocation::Background);
 }
+
+std::string ANSI::clearScreen(bool returnToTopLeft){
+    return std::string("\e[2J") + (returnToTopLeft ? "\e[H" : "");
+}
